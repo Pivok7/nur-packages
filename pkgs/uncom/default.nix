@@ -17,7 +17,7 @@ stdenv.mkDerivation {
     owner = "Pivok7";
     repo = "uncom";
     rev = "2074acc54a3117e41eb0631abd54c9af6a9171f9";
-    sha256 = "sha256-RzxMVBG6FxNDSaLDLeZCIwpC6YLxjkDN99vj6I0dquc=";
+    sha256 = "sha256-ghL5qYKrGQmN5TxV5/3aVKWpCaPmTWfqtO+J35NzZuY=";
   };
 
   nativeBuildInputs = [
