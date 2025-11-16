@@ -29,7 +29,6 @@ stdenv.mkDerivation {
     longDescription = "Easily create templates for c, c++ and zig";
     homepage = "https://github.com/Pivok7/makker";
     license = licenses.mit;
-    maintainers = [ maintainers.Pivok7 ];
     platforms = platforms.all;
   };
 }
