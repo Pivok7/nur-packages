@@ -15,4 +15,5 @@
   overlays = import ./overlays; # nixpkgs overlays
 
   hello-nur = pkgs.callPackage ./pkgs/hello-nur { };
+  makker = pkgs.callPackage ./pkgs/makker { };
 }
