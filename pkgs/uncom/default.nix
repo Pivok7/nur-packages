@@ -24,14 +24,12 @@ stdenv.mkDerivation {
     zig.hook
   ];
 
-  buildInputs = [
+  propagatedBuildInputs = [
     unzip
     xz
     bzip2
     p7zip
   ];
-
-  strictDeps = true;
 
   zigBuildFlags = [
     "-Doptimize=ReleaseFast"
