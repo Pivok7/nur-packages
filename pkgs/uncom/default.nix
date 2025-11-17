@@ -4,6 +4,7 @@
   lib,
   zig,
   unzip,
+  gzip,
   xz,
   bzip2,
   p7zip,
@@ -24,16 +25,22 @@ stdenv.mkDerivation {
     zig.hook
   ];
 
-  propagatedBuildInputs = [
-    unzip
-    xz
-    bzip2
-    p7zip
-  ];
-
   zigBuildFlags = [
     "-Doptimize=ReleaseFast"
   ];
+
+  makeWrapperArgs =
+    let
+      archivers = lib.makeBinPath [
+        gzip
+        p7zip
+        bzip2
+        xz
+      ];
+    in
+    [
+      ''--prefix PATH : "${archivers}"''
+    ];
 
   meta = with lib; {
     description = "Universal uncompressor";
