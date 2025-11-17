@@ -5,7 +5,6 @@
   lib,
   zig,
   unzip,
-  gzip,
   xz,
   bzip2,
   p7zip,
