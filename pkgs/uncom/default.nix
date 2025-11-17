@@ -1,6 +1,7 @@
 {
   stdenv,
   fetchFromGitHub,
+  makeWrapper,
   lib,
   zig,
   unzip,
@@ -22,6 +23,7 @@ stdenv.mkDerivation {
   };
 
   nativeBuildInputs = [
+    makeWrapper
     zig.hook
   ];
 
@@ -29,18 +31,21 @@ stdenv.mkDerivation {
     "-Doptimize=ReleaseFast"
   ];
 
-  makeWrapperArgs =
-    let
-      archivers = lib.makeBinPath [
-        gzip
-        p7zip
-        bzip2
-        xz
-      ];
-    in
-    [
-      ''--prefix PATH : "${archivers}"''
-    ];
+  dontUseZigInstall = true;
+
+  installPhase = ''
+    mkdir -p $out/bin
+    mv zig-out/bin/uncom $out/bin/
+    wrapProgram $out/bin/$pname \
+      --prefix PATH : ${
+        lib.makeBinPath [
+          unzip
+          xz
+          bzip2
+          p7zip
+        ]
+      }
+  '';
 
   meta = with lib; {
     description = "Universal uncompressor";
