@@ -31,6 +31,8 @@ stdenv.mkDerivation {
     p7zip
   ];
 
+  strictDeps = true;
+
   zigBuildFlags = [
     "-Doptimize=ReleaseFast"
   ];
