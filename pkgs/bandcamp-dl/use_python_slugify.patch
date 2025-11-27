@@ -1,3 +1,19 @@
+diff --git a/bandcamp_dl/bandcampdownloader.py b/bandcamp_dl/bandcampdownloader.py
+index affdf50..7c90a13 100644
+--- a/bandcamp_dl/bandcampdownloader.py
++++ b/bandcamp_dl/bandcampdownloader.py
+@@ -68,9 +68,8 @@ class BandcampDownloader:
+         self.logger.debug(f"\n\tTemplate: {path}")
+
+         def slugify_preset(content):
+-            slugged = slugify.slugify(content, ok=ok_chars, only_ascii=ascii_only,
+-                                      spaces=keep_space, lower=not keep_upper,
+-                                      space_replacement=space_char)
++            slugged = slugify.slugify(content, separator=" ",
++                                      lowercase=not keep_upper)
+             return slugged
+
+         # TODO: simplify, both halves of this are near identical
 diff --git a/pyproject.toml b/pyproject.toml
 index ba1b04f..09165a6 100644
 --- a/pyproject.toml
