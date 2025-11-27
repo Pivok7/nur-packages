@@ -1,16 +1,48 @@
 diff --git a/bandcamp_dl/bandcampdownloader.py b/bandcamp_dl/bandcampdownloader.py
-index affdf50..7c90a13 100644
+index affdf50..9a3f8b4 100644
 --- a/bandcamp_dl/bandcampdownloader.py
 +++ b/bandcamp_dl/bandcampdownloader.py
-@@ -68,9 +68,8 @@ class BandcampDownloader:
+@@ -1,6 +1,7 @@
+ import logging
+ import os
+ import shutil
++import re
+
+ from mutagen import mp3
+ from mutagen import id3
+@@ -67,10 +68,31 @@ class BandcampDownloader:
+         path = self.config.template
          self.logger.debug(f"\n\tTemplate: {path}")
 
-         def slugify_preset(content):
+-        def slugify_preset(content):
 -            slugged = slugify.slugify(content, ok=ok_chars, only_ascii=ascii_only,
 -                                      spaces=keep_space, lower=not keep_upper,
 -                                      space_replacement=space_char)
-+            slugged = slugify.slugify(content, separator=" ",
-+                                      lowercase=not keep_upper)
++        def slugify_preset(content: str) -> str:
++            allow_unicode = not ascii_only
++            lowercase = not keep_upper
++
++            # Build regex_pattern to disallow characters except word chars, whitespace, '-' and any ok_chars.
++            if ok_chars:
++                esc = re.escape(ok_chars)
++                regex_pattern = rf'[^-\w\s{esc}]'
++            else:
++                regex_pattern = r'[^-\w\s]'
++
++            # If we want to preserve spaces, use a space as separator and replace afterwards.
++            separator = ' ' if keep_space else space_char
++
++            slugged = slugify.slugify(
++                content,
++                max_length=0,
++                word_boundary=False,
++                separator=separator,
++                regex_pattern=regex_pattern,
++                lowercase=lowercase,
++                allow_unicode=allow_unicode,
++                replacements=[[' ', space_char]],
++            )
++
              return slugged
 
          # TODO: simplify, both halves of this are near identical
