@@ -18,7 +18,7 @@ python313Packages.buildPythonPackage {
   patches = [
     # unicode-slugify has failing tests and is overall unmaintained and broken.
     # python-slugify is a preferrable replacement
-    ./use_python_slugify.patch
+    ./python_slugify.patch
   ];
 
   pyproject = true;

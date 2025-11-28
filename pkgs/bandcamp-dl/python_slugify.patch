@@ -1,5 +1,5 @@
 diff --git a/bandcamp_dl/bandcampdownloader.py b/bandcamp_dl/bandcampdownloader.py
-index affdf50..9a3f8b4 100644
+index affdf50..d7ab77d 100644
 --- a/bandcamp_dl/bandcampdownloader.py
 +++ b/bandcamp_dl/bandcampdownloader.py
 @@ -1,6 +1,7 @@
@@ -10,7 +10,7 @@ index affdf50..9a3f8b4 100644
 
  from mutagen import mp3
  from mutagen import id3
-@@ -67,10 +68,31 @@ class BandcampDownloader:
+@@ -67,10 +68,28 @@ class BandcampDownloader:
          path = self.config.template
          self.logger.debug(f"\n\tTemplate: {path}")
 
@@ -34,13 +34,10 @@ index affdf50..9a3f8b4 100644
 +
 +            slugged = slugify.slugify(
 +                content,
-+                max_length=0,
-+                word_boundary=False,
 +                separator=separator,
 +                regex_pattern=regex_pattern,
 +                lowercase=lowercase,
 +                allow_unicode=allow_unicode,
-+                replacements=[[' ', space_char]],
 +            )
 +
              return slugged
