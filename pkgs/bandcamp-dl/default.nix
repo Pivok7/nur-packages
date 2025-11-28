@@ -1,9 +1,33 @@
 {
   lib,
+  fetchPypi,
   fetchFromGitHub,
   python313Packages,
 }:
 
+let
+  unicode-slugify =
+    let
+      pname = "unicode-slugify";
+      version = "0.1.5";
+    in
+    python313Packages.buildPythonPackage {
+      format = "setuptools";
+      inherit pname version;
+
+      src = fetchPypi {
+        inherit pname version;
+        sha256 = "sha256-JfQkJYMX5MtBCT4pUzdLOvHyMJcpdmRzHNs65G9r1sM=";
+      };
+
+      propagatedBuildInputs = with python313Packages; [
+	six
+	unidecode
+      ];
+
+      doCheck = false;
+    };
+in
 python313Packages.buildPythonPackage {
   pname = "bandcamp-dl";
   version = "0.0.17";
@@ -14,12 +38,6 @@ python313Packages.buildPythonPackage {
     rev = "d7b4c4d6e7bfe365ee36514d6c608caf883e4476";
     sha256 = "sha256-PNyVEzwRMXE0AtTTg+JyWw6+FSuxobi3orXuxkG0kxw=";
   };
-
-  patches = [
-    # unicode-slugify has failing tests and is overall unmaintained and broken.
-    # python-slugify is a preferrable replacement
-    ./python_slugify.patch
-  ];
 
   pyproject = true;
   build-system = with python313Packages; [
@@ -32,7 +50,7 @@ python313Packages.buildPythonPackage {
     demjson3
     mutagen
     requests
-    python-slugify
+    unicode-slugify
     urllib3
   ];
 
