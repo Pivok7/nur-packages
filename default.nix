@@ -17,4 +17,5 @@
   hello-nur = pkgs.callPackage ./pkgs/hello-nur { };
   makker = pkgs.callPackage ./pkgs/makker { };
   uncom = pkgs.callPackage ./pkgs/uncom { };
+  bandcamp-dl = pkgs.callPackage ./pkgs/bandcamp-dl { };
 }
