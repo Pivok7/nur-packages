@@ -18,4 +18,5 @@
   makker = pkgs.callPackage ./pkgs/makker { };
   uncom = pkgs.callPackage ./pkgs/uncom { };
   bandcamp-dl = pkgs.callPackage ./pkgs/bandcamp-dl { };
+  spike = pkgs.callPackage ./pkgs/spike { };
 }
