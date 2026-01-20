@@ -3,6 +3,7 @@
   stdenv,
   callPackage,
   makeWrapper,
+  fetchgit,
   libGL,
   libxkbcommon,
   wayland,
@@ -22,9 +23,10 @@ stdenv.mkDerivation (finalAttrs: rec {
   pname = "spike";
   version = "0.1.0";
 
-  src = fetchGit {
+  src = fetchgit {
     url = "https://codeberg.org/Pivok/spike";
     rev = "9eee3f282bdb7434b313bb429ae7e65ba3ed7771";
+    hash = "sha256-LnHIY5GDFo77shfr+LyqbxFjltN59lseUJDF7dIjxWE=";
   };
 
   deps = callPackage ./deps.nix {
