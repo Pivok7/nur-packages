@@ -58,7 +58,6 @@ python3Packages.buildPythonPackage rec {
   meta = {
     description = "Simple python script to download Bandcamp albums";
     homepage = "https://github.com/Evolution0/bandcamp-dl";
-    maintainers = [ lib.maintainers.pivok ];
     license = lib.licenses.unlicense;
     platforms = lib.platforms.all;
   };
