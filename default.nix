@@ -19,4 +19,5 @@
   uncom = pkgs.callPackage ./pkgs/uncom { };
   bandcamp-dl = pkgs.callPackage ./pkgs/bandcamp-dl { };
   spike = pkgs.callPackage ./pkgs/spike { };
+  hyprcursor-phinger = pkgs.callPackage ./pkgs/hyprcursor-phinger { };
 }
