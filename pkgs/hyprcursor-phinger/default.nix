@@ -1,13 +1,28 @@
-{pkgs, ...}:
+{
+  pkgs,
+  fetchFromGitHub,
+  ...
+}:
 pkgs.stdenvNoCC.mkDerivation rec {
   name = "hyprcursor-phinger";
   version = "v2.0";
-  src = builtins.fetchGit {
-    url = "https://github.com/phisch/phinger-cursors";
+  src = fetchFromGitHub {
+    owner = "phisch";
+    repo = "phinger-cursors";
     rev = "1e674f9a86d768de9f7dc93bb6d9685e25ce9655";
+    sha256 = "sha256-Mt34vsuwdpekUHsdaOp1NAcD/mhZhCQpMAkL4yhPmcc=";
   };
-  nativeBuildInputs = with pkgs; [hyprcursor xcur2png jq ripgrep bc];
-  phases = ["unpackPhase" "installPhase"];
+  nativeBuildInputs = with pkgs; [
+    hyprcursor
+    xcur2png
+    jq
+    ripgrep
+    bc
+  ];
+  phases = [
+    "unpackPhase"
+    "installPhase"
+  ];
   installPhase = ''
     runHook preInstall
 
