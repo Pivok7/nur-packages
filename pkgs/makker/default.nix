@@ -2,7 +2,7 @@
   stdenv,
   fetchFromGitHub,
   lib,
-  zig
+  zig_0_15
 }:
 
 stdenv.mkDerivation {
@@ -17,7 +17,7 @@ stdenv.mkDerivation {
   };
 
   nativeBuildInputs = [
-    zig.hook
+    zig_0_15.hook
   ];
 
   zigBuildFlags = [

@@ -7,7 +7,7 @@
   libGL,
   libxkbcommon,
   wayland,
-  zig,
+  zig_0_15,
 
   # Usually you would override `zig.hook` with this, but we do that internally
   # since upstream recommends a non-default level
@@ -15,7 +15,7 @@
   optimizeLevel ? "ReleaseFast",
 }:
 let
-  zig_hook = zig.hook.overrideAttrs {
+  zig_hook = zig_0_15.hook.overrideAttrs {
     zig_default_flags = "-Dcpu=baseline -Doptimize=${optimizeLevel} --color off";
   };
 in

@@ -3,7 +3,7 @@
   fetchFromGitHub,
   makeWrapper,
   lib,
-  zig,
+  zig_0_15,
   unzip,
   xz,
   bzip2,
@@ -23,7 +23,7 @@ stdenv.mkDerivation {
 
   nativeBuildInputs = [
     makeWrapper
-    zig.hook
+    zig_0_15.hook
   ];
 
   zigBuildFlags = [
