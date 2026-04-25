@@ -18,6 +18,4 @@
   makker = pkgs.callPackage ./pkgs/makker { };
   uncom = pkgs.callPackage ./pkgs/uncom { };
   bandcamp-dl = pkgs.callPackage ./pkgs/bandcamp-dl { };
-  # Taken from https://github.com/Jappie3/hyprcursor-phinger
-  hyprcursor-phinger = pkgs.callPackage ./pkgs/hyprcursor-phinger { };
 }
