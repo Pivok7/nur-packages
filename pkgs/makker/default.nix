@@ -2,7 +2,7 @@
   stdenv,
   fetchFromGitHub,
   lib,
-  zig_0_15
+  zig
 }:
 
 stdenv.mkDerivation {
@@ -12,16 +12,12 @@ stdenv.mkDerivation {
   src = fetchFromGitHub {
     owner = "Pivok7";
     repo = "makker";
-    rev = "fae8c9c08d0fe7de14b0b98c681e561d134b2cb2";
-    sha256 = "sha256-OfjKEfsEE20s0l0dy0QYeNe28TxHNFGfMMT137FIklo=";
+    tag = "v1.1.0";
+    sha256 = "sha256-rbD56ZN3mmx/XcNUxIcdFWT1bJ/Lzf6pQc/yERfLRk4=";
   };
 
   nativeBuildInputs = [
-    zig_0_15.hook
-  ];
-
-  zigBuildFlags = [
-    "-Doptimize=ReleaseFast"
+    zig.hook
   ];
 
   meta = with lib; {

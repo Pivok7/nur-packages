@@ -3,31 +3,27 @@
   fetchFromGitHub,
   makeWrapper,
   lib,
-  zig_0_15,
+  zig,
   unzip,
   xz,
   bzip2,
   p7zip,
 }:
 
-stdenv.mkDerivation {
+stdenv.mkDerivation rec {
   pname = "uncom";
-  version = "0.1.0";
+  version = "1.1.0";
 
   src = fetchFromGitHub {
     owner = "Pivok7";
     repo = "uncom";
-    rev = "555b81a6607245486fb4e45410ad1856c337b041";
-    sha256 = "sha256-enbwIBtXaes8973y+6Frszx/QtH3T8XdLsFjjWauMA0=";
+    tag = "v${version}";
+    sha256 = "sha256-udG2AFcTQpiApEkUuZDDRM1AQCD16wiQav/S3oY4SIk=";
   };
 
   nativeBuildInputs = [
     makeWrapper
-    zig_0_15.hook
-  ];
-
-  zigBuildFlags = [
-    "-Doptimize=ReleaseFast"
+    zig.hook
   ];
 
   dontUseZigInstall = true;
