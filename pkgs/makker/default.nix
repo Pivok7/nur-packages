@@ -5,15 +5,15 @@
   zig
 }:
 
-stdenv.mkDerivation {
+stdenv.mkDerivation rec {
   pname = "makker";
-  version = "1.0.0";
+  version = "1.2.0";
 
   src = fetchFromGitHub {
     owner = "Pivok7";
     repo = "makker";
-    tag = "v1.1.0";
-    sha256 = "sha256-rbD56ZN3mmx/XcNUxIcdFWT1bJ/Lzf6pQc/yERfLRk4=";
+    tag = "v${version}";
+    sha256 = "sha256-TP7LaUv096Yh7fgTXfMY6uVHR/MxO/vGwxHKSallceE=";
   };
 
   nativeBuildInputs = [
