@@ -30,7 +30,7 @@ let
     };
 in
 python3Packages.buildPythonPackage rec {
-  pname = "bandcamp-dl";
+  pname = "bandcamp-downloader";
   version = "0.0.17";
 
   pyproject = true;
@@ -59,6 +59,7 @@ python3Packages.buildPythonPackage rec {
     description = "Simple python script to download Bandcamp albums";
     homepage = "https://github.com/Evolution0/bandcamp-dl";
     license = lib.licenses.unlicense;
+    mainProgram = "bandcamp-dl";
     platforms = lib.platforms.all;
   };
 }
