@@ -1,0 +1,25 @@
+diff --git a/src/Surface.zig b/src/Surface.zig
+index 4d66622e3..d0b4c1ff5 100644
+--- a/src/Surface.zig
++++ b/src/Surface.zig
+@@ -3516,7 +3516,10 @@ pub fn scrollCallback(
+ 
+         // If we're scrolling up or down, then send a mouse event.
+         if (self.isMouseReporting()) {
+-            for (0..@abs(y.delta)) |_| {
++            const y_events: usize = if (y.delta != 0) 1 else 0;
++            const x_events: usize = if (x.delta != 0) 1 else 0;
++
++            for (0..y_events) |_| {
+                 const pos = try self.rt_surface.getCursorPos();
+                 try self.mouseReport(switch (y.direction()) {
+                     .up_right => .four,
+@@ -3524,7 +3527,7 @@ pub fn scrollCallback(
+                 }, .press, self.mouse.mods, pos);
+             }
+ 
+-            for (0..@abs(x.delta)) |_| {
++            for (0..x_events) |_| {
+                 const pos = try self.rt_surface.getCursorPos();
+                 try self.mouseReport(switch (x.direction()) {
+                     .up_right => .six,
