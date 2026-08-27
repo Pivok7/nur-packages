@@ -1,20 +1,20 @@
 {
   lib,
   stdenv,
-  fetchFromGitHub,
+  fetchFromRadicle,
   makeWrapper,
   nushell,
 }:
 
 stdenv.mkDerivation rec {
   pname = "makker";
-  version = "2.1.0";
+  version = "2.2.1";
 
-  src = fetchFromGitHub {
-    owner = "Pivok7";
-    repo = "makker";
+  src = fetchFromRadicle {
+    seed = "pivok.radicle.garden";
+    repo = "z2GiyL7zsKPQ3XWiPAKhbk5HaPVZh";
     tag = "v${version}";
-    sha256 = "sha256-YRP4da8CIMdaJa/oQOo/Nf0+hHZqPkORCh+Qjx/AwhA=";
+    sha256 = "sha256-ZfmGLwWxZJ3FhVlUEnK6Eh/AnQcVc3cZXEv7tUo7z8A=";
   };
 
   nativeBuildInputs = [
