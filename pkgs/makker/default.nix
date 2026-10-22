@@ -8,13 +8,13 @@
 
 stdenv.mkDerivation rec {
   pname = "makker";
-  version = "2.2.2";
+  version = "2.3.0";
 
   src = fetchFromRadicle {
     seed = "pivok.radicle.garden";
     repo = "z2GiyL7zsKPQ3XWiPAKhbk5HaPVZh";
     tag = "v${version}";
-    sha256 = "sha256-pTpPEdv4y2u7VCSqG4kXNhAvwYnMXjT3iEDeGP83SzI=";
+    sha256 = "sha256-LVBxwvD/BFTAI6XD+ToeNehE8xZ0sm2fuX3A4ztTgog=";
   };
 
   nativeBuildInputs = [
