@@ -19,4 +19,5 @@
   uncom = pkgs.callPackage ./pkgs/uncom { };
   bandcamp-dl = pkgs.callPackage ./pkgs/bandcamp-dl { };
   ghostty = pkgs.callPackage ./pkgs/ghostty { };
+  revo = pkgs.callPackage ./pkgs/revo { };
 }
