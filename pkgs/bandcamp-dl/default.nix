@@ -5,6 +5,8 @@
 }:
 
 let
+  # Upstream is unmaintained so we fetch it directly from github
+  # instead of moving it to a seperate package
   unicode-slugify =
     let
       pname = "unicode-slugify";
@@ -44,7 +46,6 @@ python3Packages.buildPythonPackage rec {
 
   build-system = with python3Packages; [
     setuptools
-    wheel
   ];
 
   propagatedBuildInputs = with python3Packages; [
